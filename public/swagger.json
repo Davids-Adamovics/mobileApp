@@ -1,0 +1,265 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"UserLoginResponse": {
+				"properties": {
+					"session_token": {
+						"type": "string"
+					},
+					"error_message": {
+						"type": "string"
+					},
+					"is_success": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"is_success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserLoginRequest": {
+				"properties": {
+					"email": {
+						"type": "string",
+						"description": "User email JSDoc"
+					},
+					"password": {
+						"type": "string"
+					},
+					"device": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserLogoutRequest": {
+				"properties": {
+					"session_token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"session_token"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterUserResponse": {
+				"properties": {
+					"is_success": {
+						"type": "boolean"
+					},
+					"error_message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"is_success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterUserRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ConfirmationResponse": {
+				"properties": {
+					"is_success": {
+						"type": "boolean"
+					},
+					"error_message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"is_success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "session_4_swagger",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"paths": {
+		"/dummy/DummyFunction": {
+			"post": {
+				"operationId": "DummyFunction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "input_name",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserLoginResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserLoginRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/logout": {
+			"post": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserLoginResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserLogoutRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/register": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RegisterUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegisterUserRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/confirmation/{uuid}": {
+			"get": {
+				"operationId": "ConfirmUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ConfirmationResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "uuid",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
